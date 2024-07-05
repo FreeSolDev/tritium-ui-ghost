@@ -1,4 +1,5 @@
-/** @type {import('next').NextConfig} */
+import webpack from 'webpack';
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -14,9 +15,19 @@ const nextConfig = {
       'gateway.irys.xyz'
     ]
   },
-  webpack: (config, { isServer }) => {
-    // Ensure you are not overriding the resolve.alias
-    // You can extend the config here if needed
+  webpack: async (config, { isServer }) => {
+    config.resolve.fallback = {
+      crypto: await import('crypto-browserify').then(mod => mod.default),
+      stream: await import('stream-browserify').then(mod => mod.default),
+      http: await import('stream-http').then(mod => mod.default),
+      https: await import('https-browserify').then(mod => mod.default),
+    };
+    config.plugins.push(
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
+        Buffer: ['buffer', 'Buffer'],
+      })
+    );
     return config;
   }
 };
