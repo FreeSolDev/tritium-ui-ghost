@@ -14,7 +14,7 @@ import Image from "next/image";
 import PoolCard from "@/components/ui/pool-card";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { WavyBackground } from "@/components/ui/gradient-wave";
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 
 export default function Home() {
   const wallet = useAnchorWallet();
