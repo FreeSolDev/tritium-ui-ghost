@@ -13,6 +13,11 @@ const nextConfig = {
       'shdw-drive.genesysgo.net',
       'gateway.irys.xyz'
     ]
+  },
+  webpack: (config, { isServer }) => {
+    // Ensure you are not overriding the resolve.alias
+    // You can extend the config here if needed
+    return config;
   }
 };
 
