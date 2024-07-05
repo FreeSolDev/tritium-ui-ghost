@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export":"next export",
+    "export": "next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -30,18 +30,25 @@
     "@tabler/icons-react": "^3.5.0",
     "98.css": "^0.1.20",
     "bs58": "^5.0.0",
+    "buffer": "^6.0.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "crypto-browserify": "^3.12.0",
     "framer-motion": "^11.1.7",
+    "https-browserify": "^1.0.0",
     "next": "14.2.3",
     "next-themes": "^0.3.0",
+    "process": "^0.11.10",
     "react": "^18",
     "react-confetti-explosion": "^2.1.2",
     "react-dom": "^18",
     "simplex-noise": "^4.0.1",
     "sonner": "^1.4.41",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
     "tailwind-merge": "^2.3.0",
-    "three": "^0.164.1"
+    "three": "^0.164.1",
+    "webpack": "^5.92.1"
   },
   "devDependencies": {
     "@types/node": "^20",

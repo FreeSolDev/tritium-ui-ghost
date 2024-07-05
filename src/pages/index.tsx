@@ -24,21 +24,17 @@ export default function Home() {
     const fetchAccounts = async () => {
       if (program) {
         const accounts = await program.account.sponsor.all();
-
         const metaplex = new Metaplex(connection);
-
         let accs = await Promise.all(
           accounts.map(async (acc) => {
             let tokenMetadata = await metaplex
               .nfts()
               .findByMint({ mintAddress: acc.account.tokenMint });
-
             let tokenInfo = await connection.getParsedAccountInfo(
               acc.account.tokenMint
             );
             //@ts-ignore
             let decimals = tokenInfo?.value?.data.parsed.info.decimals;
-
             let uri = await fetch(tokenMetadata.uri);
             let tokenJson = await uri.json();
             return {
@@ -50,12 +46,11 @@ export default function Home() {
             };
           })
         );
-
         setItems(accs as any);
       }
     };
     fetchAccounts();
-  }, []);
+  }, [program]);
 
   return (
     <>
