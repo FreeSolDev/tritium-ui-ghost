@@ -1,5 +1,4 @@
-import webpack from 'webpack';
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -14,21 +13,6 @@ const nextConfig = {
       'shdw-drive.genesysgo.net',
       'gateway.irys.xyz'
     ]
-  },
-  webpack: async (config, { isServer }) => {
-    config.resolve.fallback = {
-      crypto: await import('crypto-browserify').then(mod => mod.default),
-      stream: await import('stream-browserify').then(mod => mod.default),
-      http: await import('stream-http').then(mod => mod.default),
-      https: await import('https-browserify').then(mod => mod.default),
-    };
-    config.plugins.push(
-      new webpack.ProvidePlugin({
-        process: 'process/browser',
-        Buffer: ['buffer', 'Buffer'],
-      })
-    );
-    return config;
   }
 };
 

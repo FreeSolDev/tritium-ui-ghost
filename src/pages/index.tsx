@@ -49,7 +49,12 @@ export default function Home() {
         setItems(accs as any);
       }
     };
-    fetchAccounts();
+    
+    const interval = setInterval(() => {
+      fetchAccounts()
+    }, 10000); // Update every second
+  
+    return () => clearInterval(interval); // Cleanup on unmount
   }, [program]);
 
   return (
